@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Winter Arc</title>
+<style>
+:root{--bg:#f5f4f0;--card:#fff;--line:#e7e4dc;--tx:#16181d;--mut:#6b7280;--ac:#4f46e5;--acs:#eef0ff;--ok:#16a34a;--oks:#e8f7ee;--fire:#f97316;--xs:#fff1e6;--red:#dc2626;--sh:0 1px 2px #0000000d,0 6px 18px #0000000a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f14;--card:#161920;--line:#262b35;--tx:#eef0f4;--mut:#98a0ae;--ac:#818cf8;--acs:#1d2040;--ok:#4ade80;--oks:#11261a;--xs:#2b1b0e;--red:#f87171;--sh:none}}
+:root[data-theme="dark"]{--bg:#0d0f14;--card:#161920;--line:#262b35;--tx:#eef0f4;--mut:#98a0ae;--ac:#818cf8;--acs:#1d2040;--ok:#4ade80;--oks:#11261a;--xs:#2b1b0e;--red:#f87171;--sh:none}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif;padding-bottom:90px}
+#app{max-width:520px;margin:0 auto;padding:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin:12px 0;box-shadow:var(--sh)}
+.hero{text-align:center;padding:22px 16px 18px;position:relative;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:24px;box-shadow:0 10px 28px #4f46e544}
+.sm{color:var(--mut);font-size:13px;letter-spacing:.04em}
+.hero .sm{color:#ffffffc4}
+.big{font-size:46px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.pc{font-size:19px;font-weight:700;color:#ffe2c2;margin:6px 0 12px}
+.bar{height:9px;background:var(--line);border-radius:9px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ok));border-radius:9px}
+.hero .bar{background:#ffffff33}.hero .bar i{background:#fff}
+h3{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:700}
+.row{display:flex;gap:14px;align-items:center;min-height:56px;padding:8px 0;cursor:pointer}
+.row+.row{border-top:1px solid var(--line)}
+.row.rest{cursor:default}
+.box{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:15px;font-weight:700;transition:background .15s}
+.on .box{background:var(--ok);border-color:var(--ok);color:#fff}
+.on .t{color:var(--mut);text-decoration:line-through}
+.s{font-size:12px;color:var(--mut)}
+button{font:inherit;font-weight:600;color:var(--tx);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;min-height:48px;cursor:pointer;box-shadow:var(--sh)}
+.seg{display:flex;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:5px}
+.seg button{flex:1;border:0;box-shadow:none;background:none}
+.seg .a,.pri{background:var(--ac);color:#fff;border-color:var(--ac)}
+.link{position:absolute;right:12px;top:12px;min-height:34px;padding:6px 12px;font-size:13px;background:#ffffff26;color:#fff;border:0;box-shadow:none;border-radius:20px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;background:none;border-radius:0;box-shadow:none;font-size:12px;color:var(--mut);min-height:62px}
+nav button.a{color:var(--ac)}
+.done{background:var(--oks);border:1px solid var(--ok);color:var(--ok);text-align:center;font-weight:700;border-radius:16px;padding:12px;margin:12px 0}
+.wt{font-size:28px;font-weight:800;text-align:center;margin:4px 0 10px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stt{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--sh);color:var(--mut);font-size:13px}
+.stt b{font-size:28px;display:block;color:var(--tx);letter-spacing:-.02em}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}
+.cal>.hd{font-size:11px;color:var(--mut);font-weight:600}
+.c{aspect-ratio:1/1.15;background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:10px;color:var(--mut);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;cursor:pointer}
+.c b{font-size:14px;color:var(--tx)}.c.f{opacity:.35}.c.h{border-color:var(--ok);background:var(--oks)}.c.x{border-color:var(--fire);background:var(--xs)}.c.t{outline:2px solid var(--ac);outline-offset:1px}
+.mh{display:flex;align-items:center;justify-content:space-between;margin:6px 0 12px;font-weight:700;font-size:18px}
+.sh{position:fixed;inset:0;background:#0008;display:flex;align-items:flex-end;z-index:9}
+.sh>div{background:var(--card);width:100%;max-width:520px;max-height:78vh;overflow:auto;border-radius:24px 24px 0 0;padding:18px;margin:0 auto;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+input,textarea,select{width:100%;font:inherit;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:11px;margin:4px 0}
+textarea{min-height:230px;font-size:14px}
+.sc{display:flex;gap:10px;padding:8px 0;font-size:14px}.sc+.sc{border-top:1px solid var(--line)}.sc span:first-child{flex:none;width:140px;color:var(--ac);font-weight:600}
+.hr{display:flex;gap:6px;align-items:center}.hr button{flex:none;width:48px;padding:0}
+.wr{display:flex;justify-content:space-between;padding:8px 0}.wr+.wr{border-top:1px solid var(--line)}
+details summary{cursor:pointer;color:var(--ac);padding:8px 0;font-weight:600}
+</style></head><body>
+<div id="app"></div>
+<nav><button data-a=nav data-v=t>🏠<br>Today</button><button data-a=nav data-v=k>📅<br>Tracker</button><button data-a=nav data-v=p>📊<br>Progress</button><button data-a=nav data-v=s>⚙️<br>Settings</button></nav>
+<script>
+const $=s=>document.querySelector(s),K='winterarc.v1';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const pd=k=>new Date(k+'T00:00:00');
+const G=[['m','🌅 Morning'],['g','📚 Growth'],['f','🏋️ Fitness'],['d','📱 Discipline'],['n','🌙 Night']];
+const DH=[
+{id:'wake',g:'m',t:'Wake up at 5:30 AM'},{id:'mwater',g:'m',t:'Drink water'},
+{id:'posture',g:'m',t:'10-minute posture routine',s:'Chin Tucks · Wall Angels · Doorway Chest Stretch · Cat-Cow · Half-Kneeling Hip-Flexor Stretch'},
+{id:'nophone',g:'m',t:'No phone/social media right after waking'},
+{id:'deep',g:'g',t:'Deep Work / Study — 1.5–2 hours'},{id:'read',g:'g',t:'Reading / Learning — 10–20 pages or 30 min'},{id:'top3',g:'g',t:"Complete today's Top 3 priorities"},
+{id:'gym',g:'f',t:'Gym / planned workout'},{id:'steps',g:'f',t:'8,000–10,000 steps'},{id:'water',g:'f',t:'4 L water'},{id:'food',g:'f',t:'Nutrition: protein + mostly whole foods'},
+{id:'social',g:'d',t:'Social media kept controlled'},{id:'scroll',g:'d',t:'No unnecessary scrolling at night'},
+{id:'journal',g:'n',t:'Journal / reflect — 5 minutes'},{id:'prep',g:'n',t:'Prepare for tomorrow'},{id:'sleep',g:'n',t:'Sleep by 9:45 PM'}];
+const SN=`5:30 AM — Wake up
+5:40–5:50 AM — Posture routine
+6:00–6:45 AM — Deep Work
+6:45–7:45 AM — Shower + breakfast + get ready
+8:30 AM–5:00 PM — College
+5:30–7:30 PM — Gym
+7:30–8:30 PM — Shower + dinner
+8:30–9:15 PM — Study / revision
+9:15–9:30 PM — Reading + journal
+9:30–9:45 PM — Prepare for tomorrow + phone away
+9:45 PM — Sleep`;
+const SH=`5:30 AM — Wake up
+5:40–5:50 AM — Posture routine
+6:00–7:30 AM — Deep Work
+7:30–9:00 AM — Breakfast + free time
+9:00 AM–12:00 PM — Flexible block: skills / projects
+12:00–2:00 PM — Lunch + recovery
+2:00–5:00 PM — Free time
+5:30–7:00 PM — Gym
+7:00–8:00 PM — Shower + dinner
+8:00–9:00 PM — Reading + light study
+9:00–9:30 PM — Journal + free time / recovery
+9:30–9:45 PM — Prepare for tomorrow + phone away
+9:45 PM — Sleep`;
+let S,V='t',tm=0,sel=null,armed=false;
+const fresh=()=>({start:key(new Date()),days:{},goals:['Become stronger and fitter','Improve college studies','Learn a valuable skill','Maintain consistent sleep','Improve discipline'],habits:JSON.parse(JSON.stringify(DH)),sched:{n:SN,h:SH},hol:false});
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(!S||!S.habits)S=fresh();
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const dd=k=>S.days[k]||{c:{},w:0,r:0};
+const mk=k=>S.days[k]=S.days[k]||{c:{},w:0,r:0};
+const isD=(d,id)=>id==='water'?d.w>=4000:!!d.c[id];
+function st(k){const d=dd(k),l=S.habits.filter(h=>!(h.id==='gym'&&d.r)),n=l.filter(h=>isD(d,h.id)).length;return{d:n,t:l.length,p:l.length?Math.round(n/l.length*100):0}}
+function days(){const a=[],t=key(new Date());let d=pd(S.start);while(key(d)<=t){a.push(key(d));d.setDate(d.getDate()+1)}return a}
+function streaks(){const a=days(),t=key(new Date());let run=0,miss=0,best=0;
+ a.forEach(k=>{const h=st(k).p>=80;if(k===t&&!h)return;if(h){run++;miss=0;best=Math.max(best,run)}else{miss++;if(miss>=2)run=0}});return{cur:run,best}}
+function week(){const t=new Date(),m=new Date(t);m.setDate(t.getDate()-((t.getDay()+6)%7));const a=[];
+ for(let i=0;i<7;i++){const x=new Date(m);x.setDate(m.getDate()+i);const k=key(x);if(k<=key(t)&&k>=S.start)a.push(k)}return a}
+function vToday(){const k=key(new Date()),d=dd(k),s=st(k),n=days().length;
+ const row=h=>{if(h.id==='gym'&&d.r)return`<div class="row rest"><span class=box>💤</span><div class=t>REST — recovery day</div></div>`;
+  const on=isD(d,h.id),au=h.id==='water';
+  return`<div class="row ${on?'on':''}" ${au?'':`data-a=tg data-id="${h.id}"`}><span class=box>${on?'✓':''}</span><div><div class=t>${esc(h.t)}</div>${h.s?`<div class=s>${esc(h.s)}</div>`:au?'<div class=s>Ticks automatically from the water tracker</div>':''}</div></div>`};
+ let h=`<div class=hero><button class=link data-a=sched>🗓 Schedule</button><div class=sm>WINTER ARC ❄️</div><div class=big>Day ${n}</div><div class=pc>🔥 ${s.p}% COMPLETE</div><div class=bar><i style="width:${s.p}%"></i></div><div class=sm>${new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}<br>Today's Progress: ${s.d}/${s.t} — ${s.p}%</div></div>`;
+ if(s.p===100&&s.t)h+=`<div class=done>🔥 100% — WINTER ARC DAY COMPLETE</div>`;
+ h+=`<div class="seg" style="margin:12px 0"><button class="${d.r?'':'a'}" data-a=mode data-v=0>🏋️ Workout Day</button><button class="${d.r?'a':''}" data-a=mode data-v=1>💤 Rest Day</button></div>`;
+ G.forEach(([g,nm])=>{const l=S.habits.filter(x=>x.g===g);if(l.length)h+=`<div class=card><h3>${nm}</h3>${l.map(row).join('')}</div>`});
+ const L=+(d.w/1000).toFixed(2);
+ h+=`<div class=card><h3>💧 Water</h3><div class=wt>💧 ${L} / 4 L</div><div class=bar><i style="width:${Math.min(100,d.w/40)}%"></i></div><div class=g3><button data-a=w data-v=250>+250 ml</button><button data-a=w data-v=500>+500 ml</button><button data-a=w data-v=1000>+1 L</button></div>${d.w>=4000?'<div class=done style="margin:10px 0 0">💧 Daily water target complete</div>':''}<div class=s style="margin-top:8px">Sip steadily through the day — don't chug it all at once. <a href=# data-a=w data-v=-250 style="color:var(--ac)">Undo 250 ml</a></div></div>`;
+ return h}
+function vTrack(){const n=new Date(),b=new Date(n.getFullYear(),n.getMonth()+tm,1),first=(b.getDay()+6)%7,len=new Date(b.getFullYear(),b.getMonth()+1,0).getDate(),tk=key(n);
+ let c=['M','T','W','T','F','S','S'].map(x=>`<div class=hd>${x}</div>`).join('');
+ for(let i=0;i<first;i++)c+='<div></div>';
+ for(let i=1;i<=len;i++){const k=key(new Date(b.getFullYear(),b.getMonth(),i));
+  if(k>tk||k<S.start){c+=`<div class="c f"><b>${i}</b></div>`;continue}
+  const s=st(k),r=dd(k).r;
+  c+=`<div class="c ${s.p===100?'x':s.p>=80?'h':''} ${k===tk?'t':''}" data-a=sel data-v=${k}><b>${i}</b><span>${r?'💤 ':''}${s.d}/${s.t}</span><span>${s.p===100?'🔥':s.p>=80?'✅':'&nbsp;'}</span></div>`}
+ return`<div class=mh><button data-a=tm data-v=-1>‹</button>${b.toLocaleDateString(undefined,{month:'long',year:'numeric'})}<button data-a=tm data-v=1>›</button></div><div class=cal>${c}</div><p class=s>🔥 100% · ✅ 80%+ · 💤 rest day. Tap a day for details.</p>`}
+function vProg(){const a=days(),sk=streaks(),ym=key(new Date()).slice(0,7),ms=a.filter(k=>k.startsWith(ym));
+ const mp=ms.length?Math.round(ms.reduce((x,k)=>x+st(k).p,0)/ms.length):0;
+ const tot=a.reduce((x,k)=>x+st(k).d,0),dc=a.filter(k=>st(k).p===100).length;
+ const w=week(),W=[['Workout',k=>dd(k).r?null:+isD(dd(k),'gym')],['Water',k=>+isD(dd(k),'water')],['Reading',k=>+isD(dd(k),'read')],['Deep Work',k=>+isD(dd(k),'deep')],
+ ['Morning Routine',k=>+['wake','mwater','posture','nophone'].every(i=>isD(dd(k),i))],['Sleep',k=>+isD(dd(k),'sleep')],['Steps',k=>+isD(dd(k),'steps')]];
+ const wp=w.length?Math.round(w.reduce((x,k)=>x+st(k).p,0)/w.length):0;
+ return`<div class=g2><div class=stt>🔥 Current streak<b>${sk.cur}</b></div><div class=stt>🏆 Longest streak<b>${sk.best}</b></div><div class=stt>📊 Monthly completion<b>${mp}%</b></div><div class=stt>📅 Days completed<b>${dc}</b></div></div>
+ <div class=stt style="margin:10px 0">✅ Total habits completed<b>${tot}</b></div>
+ <p class=s>Never miss twice: one missed day keeps your streak alive, two in a row resets it. A day counts at 80%+.</p>
+ <div class=card><h3>WEEKLY WINTER ARC — ${wp}%</h3><div class=bar><i style="width:${wp}%"></i></div>${W.map(([l,f])=>{const r=w.map(f).filter(x=>x!==null);return`<div class=wr><span>${l}</span><b>${r.reduce((x,y)=>x+y,0)}/${r.length}</b></div>`}).join('')}</div>
+ <div class=card><h3>🎯 Monthly Goals</h3>${S.goals.filter(g=>g).map((g,i)=>`<div class=wr><span>${i+1}. ${esc(g)}</span></div>`).join('')||'<div class=s>Add goals in Settings.</div>'}</div>`}
+function vSet(){const sc=S.hol?S.sched.h:S.sched.n;
+ return`<div class=card><h3>🎯 Monthly Goals (up to 5)</h3>${[0,1,2,3,4].map(i=>`<input data-a=goal data-i=${i} value="${esc(S.goals[i]||'')}" placeholder="Goal ${i+1}">`).join('')}</div>
+ <div class=card id=sch><h3>🗓 Schedule — ${S.hol?'Holiday':'College Day'}</h3><div class=seg style="margin:8px 0"><button class="${S.hol?'':'a'}" data-a=hol data-v=0>🎓 College</button><button class="${S.hol?'a':''}" data-a=hol data-v=1>🌴 Holiday Mode</button></div>
+ ${sc.split('\n').filter(x=>x.trim()).map(l=>{const p=l.split(' — ');return`<div class=sc><span>${esc(p[0])}</span><span>${esc(p.slice(1).join(' — '))}</span></div>`}).join('')}
+ <details><summary>Edit schedules</summary><div class=s>College (one line each: time — activity)</div><textarea data-a=sc data-v=n>${esc(S.sched.n)}</textarea><div class=s>Holiday</div><textarea data-a=sc data-v=h>${esc(S.sched.h)}</textarea></details></div>
+ <div class=card><h3>✅ Habits</h3>${S.habits.map((h,i)=>`<div class=hr><input data-a=hn data-i=${i} value="${esc(h.t)}"><button data-a=hd data-i=${i}>✕</button></div>`).join('')}
+ <div class=hr style="margin-top:8px"><input id=nh placeholder="New habit"><select id=ng style="width:auto">${G.map(g=>`<option value=${g[0]}>${g[1]}</option>`).join('')}</select></div><button class=pri style="width:100%;margin-top:8px" data-a=ha>+ Add habit</button></div>
+ <div class=card><h3>📆 Start date</h3><input type=date data-a=start value="${S.start}"></div>
+ <button style="width:100%;border-color:var(--red);color:var(--red)" data-a=rs>${armed?'Tap again to erase everything':'Reset all data'}</button>`}
+function sheet(){if(!sel)return'';const d=dd(sel),s=st(sel);
+ return`<div class=sh data-a=close><div data-a=x><h3>${pd(sel).toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3><div class=s>${d.r?'💤 Rest / Recovery day · ':''}${s.d}/${s.t} — ${s.p}% · 💧 ${+(d.w/1000).toFixed(2)} / 4 L</div>
+ ${S.habits.map(h=>h.id==='gym'&&d.r?`<div class=wr><span>💤 ${esc(h.t)}</span><b>REST</b></div>`:`<div class=wr><span>${esc(h.t)}</span><b>${isD(d,h.id)?'✅':'⬜'}</b></div>`).join('')}
+ <button style="width:100%;margin-top:12px" data-a=close>Close</button></div></div>`}
+function render(){const y=scrollY;$('#app').innerHTML=({t:vToday,k:vTrack,p:vProg,s:vSet})[V]()+sheet();
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('a',b.dataset.v===V));scrollTo(0,y)}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t)return;const a=t.dataset.a,v=t.dataset.v,k=key(new Date());let go=true;
+ if(a==='x')return;if(a==='w')e.preventDefault();
+ if(a==='nav'){V=v;sel=null;armed=false;scrollTo(0,0)}
+ else if(a==='tg'){const d=mk(k);d.c[t.dataset.id]=!d.c[t.dataset.id]}
+ else if(a==='mode')mk(k).r=+v;
+ else if(a==='w'){const d=mk(k);d.w=Math.max(0,Math.min(8000,d.w+ +v))}
+ else if(a==='tm')tm+=+v;
+ else if(a==='sel')sel=v;
+ else if(a==='close')sel=null;
+ else if(a==='hol')S.hol=v==='1';
+ else if(a==='sched'){V='s';render();$('#sch').scrollIntoView();return}
+ else if(a==='hd')S.habits.splice(+t.dataset.i,1);
+ else if(a==='ha'){const x=$('#nh').value.trim();if(!x)return;S.habits.push({id:'c'+Date.now(),g:$('#ng').value,t:x})}
+ else if(a==='rs'){if(!armed){armed=true}else{try{localStorage.removeItem(K)}catch(e){}S=fresh();armed=false;V='t'}go=false;if(V==='t'||armed)render();save();return}
+ else go=false;
+ if(go){save();render()}});
+document.addEventListener('change',e=>{const t=e.target,a=t.dataset.a;if(!a)return;
+ if(a==='goal')S.goals[+t.dataset.i]=t.value.trim();
+ else if(a==='sc')S.sched[t.dataset.v]=t.value;
+ else if(a==='hn'){const x=t.value.trim();if(x)S.habits[+t.dataset.i].t=x}
+ else if(a==='start'&&t.value){S.start=t.value}
+ save()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)render()});
+render();
+</script></body></html>
