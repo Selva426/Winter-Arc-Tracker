@@ -28,8 +28,6 @@ Edit `www/index.html` and push to `main`. A new APK is built automatically.
 
 ## Screenshots
 
-![Winter Arc preview](docs/preview.png)
-
 <p align="center">
   <img src="docs/winter-arc-today.png" width="23%" alt="Today">
   <img src="docs/winter-arc-tracker.png" width="23%" alt="Tracker">
