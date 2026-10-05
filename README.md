@@ -25,3 +25,14 @@ A simple, offline-first daily habit tracker for Android. Open it, tick today's h
 
 ## Develop
 Edit `www/index.html` and push to `main`. A new APK is built automatically.
+
+## Screenshots
+
+![Winter Arc preview](docs/preview.png)
+
+<p align="center">
+  <img src="docs/winter-arc-today.png" width="23%" alt="Today">
+  <img src="docs/winter-arc-tracker.png" width="23%" alt="Tracker">
+  <img src="docs/winter-arc-progress.png" width="23%" alt="Progress">
+  <img src="docs/winter-arc-settings.png" width="23%" alt="Settings">
+</p>
